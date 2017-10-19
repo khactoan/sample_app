@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(show new create)
   before_action :verify_admin!, only: :destroy
   before_action :load_user, except: %i(index new create)
+  before_action :correct_user, only: %i(edit update)
 
   def index
-    @users = User.select_id_name_email.sort_by_created_at
-      .paginate page: params[:page], per_page: @per_page
+    @users = User.select_id_name_email.activated
+      .sort_by_created_at
+      .paginate page: params[:page], per_page: Settings.per_page
   end
 
   def new
@@ -22,6 +24,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @microposts = @user.microposts.paginate page: params[:page],
+      per_page: Settings.per_page
   end
 
   def update
