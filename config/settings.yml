@@ -3,3 +3,4 @@ max_length_name: 50
 min_length_password: 6
 gravatar_size: 80
 gravatar_size_for_user: 50
+password_reset_expired: 2
