@@ -1,6 +1,8 @@
 en:
   about: "About"
   account: "Account"
+  account_activation: "Account activation"
+  activate: "Activate"
   and: "and"
   book: "book"
   can_not_find_user: "Can not find user!"
@@ -10,8 +12,8 @@ en:
   error: "error"
   hello: "Hello world"
   help: "Help"
+  hi: "Hi"
   home: "Home"
-  profile: "Profile"
   invalid_email_or_password: "Invalid email/password combination"
   is_a: "is a"
   log_in: "Log in"
@@ -29,7 +31,15 @@ en:
   setting: "Settings"
   sign_up: "Sign up"
   sign_up_now: "Sign up now!"
+  user_deleted: "User deleted"
   welcone_to_sample_app: "Welcome to the Sample App!"
+  password_reset: "User#password_reset"
+  find_mail_in_app_view_user_mailer_password_reset:
+    ", find me in app/views/user_mailer/password_reset.html.erb"
+
+  mailer:
+    link_to_activate_account:
+      "Welcome to the Sample App! Click on the link below to activate your account:"
 
   layouts:
     _header:
@@ -44,25 +54,25 @@ en:
     new:
       this_will_be_signup_page_for_new_users:
         "This will be a signup page for new users."
-      create_my_account: "Create my account"
       confirmation: "Confirmation"
+      create_my_account: "Create my account"
+      this_will_be_signup_page_for_new_users:
     show:
       can_not_find_user: "Can not find user!"
     edit:
+      change: "Change"
       edit_user: "Edit user"
       update_your_profile: "Update your profile"
-      change: "Change"
+    create:
+      please_check_your_mail_to_activate: "Please check your email to activate your account."
     index:
       all_users: "All users"
       you_sure: "You sure?"
-    update:
-      user_updated: "User updated"
-      user_update_error: "User update error"
-    destroy:
-      user_deleted: "User deleted"
-      user_delete_error: "User delete error"
-    user:
-      you_sure: "You sure?"
+
+    account_activations:
+      edit:
+        account_activated: "Account activated!"
+        invalid_activation_link: "Invalid activation link"
 
   share:
     _error_messages:
@@ -75,6 +85,9 @@ en:
     news:
       new_user: "New user?"
       remember_me_on_this_computer: "Remember me on this computer"
+    create:
+      account_not_activated:
+        "Account not activated. Check your email for the activation link."
 
   static_pages:
     about:
