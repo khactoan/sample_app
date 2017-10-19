@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
 
   def index
-    @users = User.select_id_name_email.activated
-      .sort_by_created_at
+    @users = User.select_id_name_email.activated.sort_by_created_at
       .paginate page: params[:page], per_page: Settings.per_page
   end
 
@@ -27,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts.paginate page: params[:page],
-      per_page: Settings.per_page
+    @microposts = @user.microposts.order_by_created_at_desc
+      .paginate page: params[:page], per_page: Settings.per_page
   end
 
   def update
@@ -50,6 +49,20 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def following
+    @title = t ".following"
+    @users = @user.following.sort_by_created_at
+      .paginate page: params[:page], per_page: Settings.per_page
+    render :show_follow
+  end
+
+  def followers
+    @title = t ".followers"
+    @users = @user.followers.sort_by_created_at
+      .paginate page: params[:page], per_page: Settings.per_page
+    render :show_follow
+  end
+
   private
 
   def verify_admin!
@@ -69,6 +82,7 @@ class UsersController < ApplicationController
 
   def load_user
     @user = User.find_by id: params[:id]
+
     return if @user
     flash[:warning] = t "can_not_find_user"
     redirect_to root_path
