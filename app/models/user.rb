@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
   before_save {email.downcase!}
 
   validates :name,  presence: true, length: {maximum: Settings.max_length_name}
@@ -11,6 +12,14 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: {minimum: Settings.min_length_password}
 
+  self.per_page = 10
+
+  scope :select_id_name_email, ->{select :id, :name, :email}
+  scope :sort_by_created_at, ->{order created_at: :desc}
+
+  def current_user? user
+    self == user
+  end
 
   def remember
     self.remember_token = User.new_token
@@ -27,6 +36,7 @@ class User < ApplicationRecord
   end
 
   class << self
+
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
