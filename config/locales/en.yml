@@ -49,6 +49,7 @@ en:
   sessions:
     news:
       new_user: "New user?"
+      remember_me_on_this_computer: "Remember me on this computer"
 
   static_pages:
     about:
