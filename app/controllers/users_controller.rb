@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.find_by id: params[:id]
 
     return if @user
-    flash[:warning] =  t ".can_not_find_user"
+    flash[:warning] =  t "can_not_find_user"
     redirect_to root_path
   end
 
@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      flash[:success] =  t "welcone_to_sample_app"
+      log_in @user
+      flash[:success] = t "welcone_to_sample_app"
       redirect_to @user
     else
       render :new

@@ -1,23 +1,30 @@
 en:
   about: "About"
+  account: "Account"
   and: "and"
   book: "book"
+  can_not_find_user: "Can not find user!"
   contact: "Contact"
   error: "error"
   hello: "Hello world"
   help: "Help"
   home: "Home"
+  profile: "Profile"
+  invalid_email_or_password: "Invalid email/password combination"
   is_a: "is a"
   log_in: "Log in"
+  log_out: "Log out"
   ror: "Ruby on Rails"
   ror_tut: "Ruby on Rails Tutorial Sample App"
+  user: "User"
   rails_log: "Rails logo"
   sample_app: "sample app"
   sample_application: "Sample Application"
   screencast_series: "screencast series"
+  settings: "Settings"
   sign_up: "Sign up"
   sign_up_now: "Sign up now!"
-  welcone_to_sample_app: "Welcome to the Sample App!"
+  welcone_to_sample_app: "Welcome to the Sample App"
 
   layouts:
     footer:
@@ -38,6 +45,10 @@ en:
   share:
     _error_messages:
       the_form_contain: "The form contains"
+
+  sessions:
+    news:
+      new_user: "New user?"
 
   static_pages:
     about:
