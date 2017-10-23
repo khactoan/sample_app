@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def index
     @users = User.select_id_name_email.sort_by_created_at
       .paginate page: params[:page], per_page: @per_page
-
   end
 
   def new
@@ -17,9 +16,9 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      log_in @user
-      flash[:success] = t "welcone_to_sample_app"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = t ".please_check_your_mail_to_activate"
+      redirect_to root_url
     else
       render :new
     end
@@ -63,7 +62,6 @@ class UsersController < ApplicationController
 
   def load_user
     @user = User.find_by id: params[:id]
-
     return if @user
     flash[:warning] = t "can_not_find_user"
     redirect_to root_path
