@@ -26,6 +26,11 @@ module SessionsHelper
     current_user.present?
   end
 
+  def redirect_back_or default
+    redirect_to session[:return_to] || default
+    session.delete :return_to
+  end
+
   def forget user
     user.forget
     cookies.delete :user_id
